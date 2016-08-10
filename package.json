@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/paarthmadan/messenger-bot/issues"
   },
-  "homepage": "https://github.com/paarthmadan/messenger-bot#readme"
+  "homepage": "https://github.com/paarthmadan/messenger-bot#readme",
+  "dependencies": {
+    "facebook-chat-api": "^1.1.0"
+  }
 }
