@@ -1,0 +1,25 @@
+{
+  "name": "messenger-bot",
+  "version": "1.0.0",
+  "description": "A personalized messenger bot designed to do various tasks.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paarthmadan/messenger-bot.git"
+  },
+  "keywords": [
+    "messenger",
+    "bot",
+    "paarth",
+    "madan"
+  ],
+  "author": "Paarth Madan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/paarthmadan/messenger-bot/issues"
+  },
+  "homepage": "https://github.com/paarthmadan/messenger-bot#readme"
+}
