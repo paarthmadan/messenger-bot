@@ -7,6 +7,7 @@
 - Changes chat colour
 - Recognizes keywords such as 'paarth'
 - Outputs weather with given location
+
 ### How to use
 ```
 git clone https://github.com/paarthmadan/messenger-bot
