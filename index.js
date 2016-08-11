@@ -1,5 +1,6 @@
 var login = require('facebook-chat-api');
 var config = require('./config');
+var weather = require('weather-js');
 
 
 login({email: config.fb.email, password: config.fb.password}, function callback(err, api){
@@ -50,7 +51,14 @@ login({email: config.fb.email, password: config.fb.password}, function callback(
 				location = location.substring(0, location.indexOf("**"));
 			}
 
-			console.log(location);
+			weather.find({search: location, degreeType: 'C'}, function(err, result) {
+  			
+  			if(err) console.log(err);
+ 
+  			console.log(JSON.stringify(result, null, 2));
+  			
+			});
+			
 		}
 
 		// else{
