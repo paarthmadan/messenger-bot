@@ -39,9 +39,11 @@ login({email: config.fb.email, password: config.fb.password}, function callback(
 				if(err) return console.error(err);
 			});
 
-		}else{
-			api.sendMessage("Bot Says: " + msg.body, msg.threadID);
 		}
+
+		// else{
+		// 	api.sendMessage("Bot Says: " + msg.body, msg.threadID);
+		// }
 
 	});
 
