@@ -2,6 +2,8 @@ var login = require('facebook-chat-api');
 var config = require('./config');
 var weather = require('weather-js');
 var request = require('request');
+var yahooFinance = require('yahoo-finance');
+
 const fs = require('fs');
 
 
@@ -78,7 +80,15 @@ login({email: config.fb.email, password: config.fb.password}, function callback(
  			api.sendMessage(constructedImageMsg, msg.threadID);
 
 			});	
-		}
+		}else if(includes("/stock", currentMessage) && includes("**", currentMessage)){
+			var indexOfSymbol = currentMessage.indexOf("**");
+			var symbol = currentMessage.substring(indexOfSymbol + 2);
+			
+			if(includes("**", symbol)){
+				symbol = symbol.substring(0, symbol.indexOf("**"));
+			}
+
+			console.log(symbol);
 	});
 });
 

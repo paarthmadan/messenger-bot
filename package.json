@@ -25,6 +25,7 @@
   "dependencies": {
     "facebook-chat-api": "^1.1.0",
     "request": "^2.74.0",
-    "weather-js": "^1.0.2"
+    "weather-js": "^1.0.2",
+    "yahoo-finance": "^0.2.12"
   }
 }
