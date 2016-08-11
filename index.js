@@ -2,9 +2,8 @@ var login = require('facebook-chat-api');
 var config = require('./config');
 var weather = require('weather-js');
 
-
 login({email: config.fb.email, password: config.fb.password}, function callback(err, api){
-
+	
 	if(err) return console.error(err);
 
 	api.setOptions({
@@ -16,10 +15,7 @@ login({email: config.fb.email, password: config.fb.password}, function callback(
 		if(err) return console.error(err);
 
 		var currentMessage = msg.body;
-
 		console.log(currentMessage);
-
-		//PAARTH INPUT
 
 		if(includes("/paarth", currentMessage)){
 			api.sendMessage({body:"Paarth is my creator!"}, msg.threadID, function callback(err, messageInfo){
@@ -54,20 +50,21 @@ login({email: config.fb.email, password: config.fb.password}, function callback(
 			weather.find({search: location, degreeType: 'C'}, function(err, result) {
   			
   			if(err) console.log(err);
- 
-  			console.log(JSON.stringify(result, null, 2));
-  			
-			});
-			
+ 			
+  			var currentInfo = result[0].current;
+
+ 			var currentTemperature = currentInfo.temperature;
+ 			var humidity = currentInfo.humidity;
+ 			var imageUrl = currentInfo.imageUrl;
+
+ 			var constructedMsg = {body: "The temperature in " + location + " is " + currentTemperature + ".\n" 
+ 			+ "The humidity index is at " + humidity + "."};
+
+ 			api.sendMessage(constructedMsg, msg.threadID);
+
+			});	
 		}
-
-		// else{
-		// 	api.sendMessage("Bot Says: " + msg.body, msg.threadID);
-		// }
-
 	});
-
-
 });
 
 function includes(string, msg){
