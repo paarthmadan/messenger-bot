@@ -82,13 +82,27 @@ login({email: config.fb.email, password: config.fb.password}, function callback(
 			});	
 		}else if(includes("/stock", currentMessage) && includes("**", currentMessage)){
 			var indexOfSymbol = currentMessage.indexOf("**");
-			var symbol = currentMessage.substring(indexOfSymbol + 2);
+			var stock = currentMessage.substring(indexOfSymbol + 2);
 			
-			if(includes("**", symbol)){
-				symbol = symbol.substring(0, symbol.indexOf("**"));
+			if(includes("**", stock)){
+				stock = stock.substring(0, stock.indexOf("**"));
 			}
 
-			console.log(symbol);
+			var stockObject = {
+				symbol: stock,
+				fields: ['s', 'n', 'd1', 'l1', 'y', 'r']
+			}
+			
+			yahooFinance.snapshot(stockObject,function (err, snapshot) {
+				if(err) return console.error(err);
+
+				console.log(snapshot);
+
+			});
+
+
+
+		}
 	});
 });
 
