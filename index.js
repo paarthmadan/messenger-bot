@@ -18,11 +18,14 @@ login({email: config.fb.email, password: config.fb.password}, function callback(
 
 		console.log(currentMessage);
 
+		//PAARTH INPUT
+
 		if(includes("/paarth", currentMessage)){
 			api.sendMessage({body:"Paarth is my creator!"}, msg.threadID, function callback(err, messageInfo){
 				if(err) return console.error(err);
 			});
-		}else if(includes("/colour", currentMessage)){
+		}
+		else if(includes("/colour", currentMessage)){
 			var startOfColour = currentMessage.indexOf("#");
 			
 			var hexCode = "#000000";
@@ -39,6 +42,15 @@ login({email: config.fb.email, password: config.fb.password}, function callback(
 				if(err) return console.error(err);
 			});
 
+		}else if(includes("/weather", currentMessage) && includes("**", currentMessage)){
+			var indexOfLocation = currentMessage.indexOf("**");
+			var location = currentMessage.substring(indexOfLocation + 2);
+			
+			if(includes("**", location)){
+				location = location.substring(0, location.indexOf("**"));
+			}
+
+			console.log(location);
 		}
 
 		// else{
