@@ -19,6 +19,11 @@ module.exports.fb{
     password: 'enter password'
 }
 ```
+
+```
+node index.js
+```
+
 #### Commands (so far)
 ##### /paarth - outputs special phrase!
 ##### /weather **City, State/Province/Country **
