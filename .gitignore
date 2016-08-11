@@ -39,3 +39,6 @@ jspm_packages
 
 # Login Info
 config.js
+
+# gif that will consistently change
+weather.gif
