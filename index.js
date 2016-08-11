@@ -96,7 +96,25 @@ login({email: config.fb.email, password: config.fb.password}, function callback(
 			yahooFinance.snapshot(stockObject,function (err, snapshot) {
 				if(err) return console.error(err);
 
-				console.log(snapshot);
+				var name = snapshot.name;
+				var price = snapshot.lastTradePriceOnly;
+				var dy = snapshot.dividendYield;
+				var stockSymbol = snapshot.symbol;
+				var date = snapshot.lastTradeDate.toString().split(" ");
+
+				var dateString = ""
+				for(var i = 0; i < 4; i++){
+					dateString += date[i] + " ";
+				}
+
+				var composedStockMessage = {
+					body: "The stock " + stockSymbol + " was last traded on " + dateString.trim() +
+					 ". The last trade price was " + price + 
+					 ". The public company is formally called \"" + name + "\""
+				}
+
+				api.sendMessage(composedStockMessage, msg.threadID);
+
 
 			});
 
