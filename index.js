@@ -1,6 +1,9 @@
 var login = require('facebook-chat-api');
 var config = require('./config');
 var weather = require('weather-js');
+var request = require('request');
+const fs = require('fs');
+
 
 login({email: config.fb.email, password: config.fb.password}, function callback(err, api){
 	
@@ -17,7 +20,10 @@ login({email: config.fb.email, password: config.fb.password}, function callback(
 		var currentMessage = msg.body;
 		console.log(currentMessage);
 
-		if(includes("/paarth", currentMessage)){
+		if(currentMessage == undefined){
+			return;
+		}
+		else if(includes("/paarth", currentMessage)){
 			api.sendMessage({body:"Paarth is my creator!"}, msg.threadID, function callback(err, messageInfo){
 				if(err) return console.error(err);
 			});
@@ -61,6 +67,15 @@ login({email: config.fb.email, password: config.fb.password}, function callback(
  			+ "The humidity is at " + humidity + "."};
 
  			api.sendMessage(constructedMsg, msg.threadID);
+
+ 			request(imageUrl).pipe(fs.createWriteStream('weather.gif'));
+
+ 			var constructedImageMsg = {
+      			body: "Image",
+      			attachment: fs.createReadStream(__dirname + '/weather.gif')
+    		};
+   
+ 			api.sendMessage(constructedImageMsg, msg.threadID);
 
 			});	
 		}
