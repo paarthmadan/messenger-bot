@@ -7,6 +7,7 @@
 - Changes chat colour
 - Recognizes keywords such as 'paarth'
 - Outputs weather with given location
+- Outputs snapshot stock data, given a symbol
 
 ### How to use
 ```
@@ -20,6 +21,8 @@ module.exports.fb{
 }
 ```
 
+#### Run
+
 ```
 node index.js
 ```
@@ -27,4 +30,5 @@ node index.js
 #### Commands (so far)
 ##### /paarth - outputs special phrase!
 ##### /weather **City, State/Province/Country **
+##### /stock ** Symbol **
 ##### /colour #FFFFFF
