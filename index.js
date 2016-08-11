@@ -57,8 +57,8 @@ login({email: config.fb.email, password: config.fb.password}, function callback(
  			var humidity = currentInfo.humidity;
  			var imageUrl = currentInfo.imageUrl;
 
- 			var constructedMsg = {body: "The temperature in " + location + " is " + currentTemperature + ".\n" 
- 			+ "The humidity index is at " + humidity + "."};
+ 			var constructedMsg = {body: "The temperature in " + location + " is " + currentTemperature + "˚C.\n" 
+ 			+ "The humidity is at " + humidity + "."};
 
  			api.sendMessage(constructedMsg, msg.threadID);
 
